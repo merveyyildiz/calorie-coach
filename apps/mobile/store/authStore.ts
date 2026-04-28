@@ -31,8 +31,10 @@ interface AuthState {
   user: AuthUser | null;
   profile: UserProfile | null;
   isLoading: boolean;
+  hasOnboarded: boolean;
   setSession: (session: Session | null) => void;
   setProfile: (profile: UserProfile | null) => void;
+  setHasOnboarded: (val: boolean) => void;
   signOut: () => Promise<void>;
 }
 
@@ -41,6 +43,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   profile: null,
   isLoading: true,
+  hasOnboarded: false,
 
   setSession: (session: Session | null) => {
     if (session?.user) {
@@ -58,6 +61,10 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   setProfile: (profile: UserProfile | null) => {
     set({ profile });
+  },
+
+  setHasOnboarded: (hasOnboarded: boolean) => {
+    set({ hasOnboarded });
   },
 
   signOut: async () => {

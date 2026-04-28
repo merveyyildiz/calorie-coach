@@ -8,6 +8,8 @@ import { supabase } from "../services/supabase";
 import { useAuthStore } from "../store/authStore";
 import { fetchProfileFromBackend } from "../services/api";
 import type { Session } from "@supabase/supabase-js";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { STORAGE_KEYS } from "../constants/storage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,8 +23,16 @@ const queryClient = new QueryClient({
 function RootLayoutNav() {
   const router = useRouter();
   const segments = useSegments();
-  const { session, setSession, profile } = useAuthStore();
+  const { session, setSession, profile, hasOnboarded, setHasOnboarded } = useAuthStore();
   const [isReady, setIsReady] = useState(false);
+  const [onboardingLoaded, setOnboardingLoaded] = useState(false);
+
+  useEffect(() => {
+    AsyncStorage.getItem(STORAGE_KEYS.HAS_SEEN_ONBOARDING).then((val) => {
+      setHasOnboarded(val === "true");
+      setOnboardingLoaded(true);
+    });
+  }, []);
 
   useEffect(() => {
     const handleSession = async (currentSession: Session | null) => {
@@ -61,16 +71,23 @@ function RootLayoutNav() {
   }, []);
 
   useEffect(() => {
-    if (!isReady) return;
+    if (!isReady || !onboardingLoaded) return;
 
     const inAuthGroup = segments[0] === "(auth)";
+    const isWelcome = segments[0] === "welcome";
     
     // Debug logları (kontrol için)
     console.log("[Auth] Session:", !!session, "ProfileAge:", profile?.age, "Path:", segments.join('/'));
 
     if (!session) {
-      // Oturum yoksa ve auth grubunda değilsek login'e at
-      if (!inAuthGroup) router.replace("/(auth)/login");
+      // Oturum yoksa:
+      if (!hasOnboarded) {
+        // İlk kez açılıyorsa ve welcome'da değilsek welcome'a at
+        if (!isWelcome) router.replace("/welcome");
+      } else {
+        // Daha önce açılmış ama oturum yoksa login'e at (auth grubunda değilsek)
+        if (!inAuthGroup) router.replace("/(auth)/login");
+      }
     } else {
       // Oturum varsa:
       if (!profile?.age) {
@@ -86,9 +103,9 @@ function RootLayoutNav() {
         router.replace("/(tabs)");
       }
     }
-  }, [session, segments, isReady, profile]);
+  }, [session, segments, isReady, profile, hasOnboarded]);
 
-  if (!isReady) {
+  if (!isReady || !onboardingLoaded) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#4CAF50" />
