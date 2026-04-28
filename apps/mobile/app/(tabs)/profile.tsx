@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, ScrollView, TouchableOpacity, Alert, Platform } from "react-native";
+import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useAuthStore } from "../../store/authStore";
@@ -7,6 +8,7 @@ import { signOut } from "../../services/auth";
 
 export default function ProfileScreen() {
   const { profile, user } = useAuthStore();
+  const router = useRouter();
 
   const handleLogout = async () => {
     if (Platform.OS === "web") {
@@ -98,7 +100,10 @@ export default function ProfileScreen() {
           {/* Aksiyonlar */}
           <Text className="text-lg font-bold text-text-primary mb-3 mt-8">Hesap Ayarları</Text>
           <View className="bg-white border border-border rounded-card overflow-hidden mb-6">
-            <TouchableOpacity className="flex-row items-center p-4 border-b border-border">
+            <TouchableOpacity 
+              onPress={() => router.push("/edit-profile")}
+              className="flex-row items-center p-4 border-b border-border"
+            >
               <Ionicons name="pencil" size={20} color="#9E9E9E" className="mr-3" />
               <Text className="flex-1 text-base text-text-primary font-medium">Profili Düzenle</Text>
               <Ionicons name="chevron-forward" size={20} color="#E0E0E0" />
