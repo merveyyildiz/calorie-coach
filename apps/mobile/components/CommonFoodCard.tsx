@@ -15,7 +15,7 @@ export function CommonFoodCard({ name, calories, icon, color, onPress }: Props) 
     <TouchableOpacity 
       activeOpacity={0.7}
       onPress={onPress}
-      className="bg-card rounded-[16px] p-5 border border-slate-100 shadow-sm w-[48%] items-center mb-4"
+      className="bg-white rounded-[16px] p-5 border border-border w-[48%] items-center mb-4"
     >
       <View 
         style={{ backgroundColor: `${color}15` }} 

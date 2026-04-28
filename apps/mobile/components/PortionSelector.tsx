@@ -81,7 +81,7 @@ export const PortionSelector: React.FC<PortionSelectorProps> = ({
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
         >
-          <View className="bg-card rounded-t-3xl p-6 min-h-[500px]">
+          <View className="bg-white rounded-t-3xl p-6 min-h-[500px]">
              {/* Header */}
             <View className="flex-row justify-between items-center mb-6">
               <Text className="text-xl font-bold text-text-primary">Ekle: {product.name}</Text>
@@ -126,7 +126,7 @@ export const PortionSelector: React.FC<PortionSelectorProps> = ({
               </View>
 
               {/* Instant Calculations */}
-              <View className="flex-row justify-between bg-background rounded-card p-4 border border-border mb-8 shadow-sm">
+              <View className="flex-row justify-between bg-white rounded-card p-4 border border-border mb-8">
                  <ValueItem label="Kalori" value={calculated.calories} unit="kcal" color="#4CAF50" />
                  <ValueItem label="Protein" value={calculated.protein} unit="g" color="#2196F3" />
                  <ValueItem label="Karb" value={calculated.carbs} unit="g" color="#FFC107" />
@@ -146,7 +146,7 @@ export const PortionSelector: React.FC<PortionSelectorProps> = ({
                     key={item.id}
                     onPress={() => setSelectedType(item.id)}
                     className={`px-6 h-12 rounded-full items-center justify-center border ${
-                      selectedType === item.id ? "bg-primary border-primary" : "bg-card border-border"
+                      selectedType === item.id ? "bg-primary border-primary" : "bg-white border-border"
                     }`}
                   >
                     <Text className={`font-semibold ${selectedType === item.id ? "text-white" : "text-text-secondary"}`}>
@@ -159,7 +159,7 @@ export const PortionSelector: React.FC<PortionSelectorProps> = ({
               {/* Action Button */}
               <TouchableOpacity
                 onPress={handleAdd}
-                className="bg-primary h-14 rounded-button items-center justify-center mb-10 shadow-lg"
+                className="bg-primary h-14 rounded-button items-center justify-center mb-10"
               >
                 <Text className="text-white font-bold text-lg">Öğünüme Ekle</Text>
               </TouchableOpacity>

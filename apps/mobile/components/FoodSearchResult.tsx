@@ -18,7 +18,7 @@ export const FoodSearchResult: React.FC<FoodSearchResultProps> = ({
   return (
     <TouchableOpacity
       onPress={onPress}
-      className="flex-row items-center bg-card p-3 mb-2 rounded-card border border-border shadow-sm"
+      className="flex-row items-center bg-white p-3 mb-2 rounded-card border border-border"
     >
       {/* Görsel Kutusu */}
       <View className="w-12 h-12 bg-background rounded-lg items-center justify-center mr-4 overflow-hidden">

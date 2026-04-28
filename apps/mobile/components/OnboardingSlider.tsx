@@ -196,7 +196,7 @@ export default function OnboardingSlider() {
           {/* Next Capsule Button */}
           <TouchableOpacity
             onPress={currentSlideIndex === ONBOARDING_SLIDES.length - 1 ? handleGetStarted : goToNextSlide}
-            className="bg-[#22C55E] h-[56px] px-8 rounded-full flex-row items-center justify-center shadow-lg shadow-green-500/30"
+            className="bg-[#22C55E] h-[56px] px-8 rounded-full flex-row items-center justify-center"
           >
             <Text className="text-white text-base font-bold mr-2 tracking-widest">
               {currentSlideIndex === ONBOARDING_SLIDES.length - 1 ? "BAŞLA" : "DEVAM"}

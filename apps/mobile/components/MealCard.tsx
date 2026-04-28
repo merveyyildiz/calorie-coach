@@ -65,7 +65,7 @@ export function MealCard({ meal, onDelete }: Props) {
       >
         <View 
           style={{ flexDirection: "row", alignItems: "center" }}
-          className="bg-card rounded-[16px] p-3 my-2 border border-slate-200 shadow-sm mx-1"
+          className="bg-white rounded-[24px] p-4 my-2 border border-border mx-1"
         >
           {/* 1. Sol: Ürün Görseli */}
           <View className="w-[72px] h-[72px] bg-slate-100 rounded-xl overflow-hidden items-center justify-center">

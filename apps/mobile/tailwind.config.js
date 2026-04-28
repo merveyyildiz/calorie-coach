@@ -24,7 +24,7 @@ module.exports = {
         "text-primary": "#0F172A",
         "text-secondary": "#475569",
         "text-hint": "#94A3B8",
-        border: "#E2E8F0",
+        border: "#ebebeb",
         success: "#22C55E",
         warning: "#EAB308",
         error: "#EF4444",

@@ -78,14 +78,14 @@ export function CalorieRing({ current, max, size = 160, strokeWidth = 14 }: Prop
 
       {/* Ortadaki Metinler - REMAINING formatı */}
       <View className="absolute items-center justify-center">
-        <Text className="text-[10px] font-bold text-text-hint tracking-widest mb-1">
+        <Text className="text-[11px] font-black text-text-hint tracking-[2px] mb-1 uppercase">
           KALAN
         </Text>
-        <Text className="text-4xl font-extrabold text-text-primary">
+        <Text className="text-5xl font-black text-text-primary">
           {Math.max(0, Math.round(max - current)).toLocaleString()}
         </Text>
-        <Text className="text-xs font-semibold text-text-hint mt-1">
-          / {max.toLocaleString()} kcal
+        <Text className="text-[11px] font-bold text-text-hint mt-2">
+          {max.toLocaleString()} kcal içinden
         </Text>
       </View>
     </View>

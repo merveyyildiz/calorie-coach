@@ -55,17 +55,16 @@ export default function DashboardScreen() {
         refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} tintColor="#22C55E" />}
       >
         {/* Modern Header */}
-        <View className="px-4 py-4 flex-row justify-between items-center bg-white/50">
+        <View className="px-4 py-4 flex-row justify-between items-center">
           <View className="flex-row items-center">
             <TouchableOpacity 
               onPress={() => router.push("/(tabs)/profile")}
-              activeOpacity={0.7}
-              className="w-10 h-10 bg-slate-200 rounded-full items-center justify-center mr-3 border border-border"
+              className="w-10 h-10 bg-slate-100 rounded-full items-center justify-center mr-3"
             >
-              <Ionicons name="person" size={20} color="#64748B" />
+              <Ionicons name="person" size={20} color="#22C55E" />
             </TouchableOpacity>
             <Text className="text-primary text-xl font-black tracking-tight">
-              Merhaba {profile?.name ? profile.name.split(" ")[0] : "Kullanıcı"}
+              Calorie Coach
             </Text>
           </View>
         </View>
@@ -78,45 +77,46 @@ export default function DashboardScreen() {
         {/* Summary Row */}
         <View className="flex-row px-4 justify-between mb-8">
           <ActivityCard 
-            label="KİLO" 
-            value={profile?.weight || "---"} 
-            unit="kg" 
-            icon="body" 
+            label="YAKILAN" 
+            value="780" 
+            unit="kcal" 
+            icon="flame" 
             color="#F97316" 
+            containerClass="w-[48%]"
           />
           <TouchableOpacity 
-            onPress={() => setIsWaterModalVisible(true)}
             activeOpacity={0.7}
+            onPress={() => setIsWaterModalVisible(true)}
             className="w-[48%]"
           >
             <ActivityCard 
               label="SU TAKİBİ" 
               value={currentWater} 
-              unit="/ 2.5L" 
+              unit="L" 
               icon="water" 
               color="#3B82F6" 
-              noWidth={true}
+              containerClass="w-full"
             />
           </TouchableOpacity>
         </View>
 
         {/* Daily Macros Section */}
         <View className="px-4 mb-8">
-          <View className="flex-row justify-between items-end mb-4">
+          <View className="flex-row justify-between items-end mb-4 px-1">
             <Text className="text-lg font-black text-text-primary">Günlük Makrolar</Text>
-            <Text className="text-[10px] font-black text-primary uppercase tracking-widest">HEDEFE ULAŞILDI %65</Text>
+            <Text className="text-[10px] font-black text-primary uppercase tracking-widest">HEDEFE ULAŞILDI %{(totals.cal / currentGoal * 100).toFixed(0)}</Text>
           </View>
 
-          {/* Protein (Large) */}
-          <View className="bg-card rounded-[16px] p-5 border border-slate-100 shadow-sm mb-3">
-             <View className="flex-row justify-between items-center mb-3">
+          {/* Protein (Wide Card) */}
+          <View className="bg-white rounded-[24px] p-6 mb-4 border border-border">
+             <View className="flex-row justify-between items-center mb-4">
                 <View className="flex-row items-center">
                    <View className="w-2 h-2 rounded-full bg-tertiary mr-2" />
-                   <Text className="text-text-primary font-bold">Protein</Text>
+                   <Text className="text-text-primary font-bold text-base">Protein</Text>
                 </View>
-                <Text className="text-text-primary font-bold text-xs">{Math.round(totals.pro)}g <Text className="text-text-hint">/ {pGoal}g</Text></Text>
+                <Text className="text-text-primary font-bold text-sm">{Math.round(totals.pro)}g <Text className="text-text-hint">/ {pGoal}g</Text></Text>
              </View>
-             <View className="h-3 bg-slate-100 rounded-full overflow-hidden">
+             <View className="h-4 bg-slate-100 rounded-full overflow-hidden">
                 <View 
                   style={{ width: `${Math.min((totals.pro/pGoal)*100, 100)}%` }} 
                   className="h-full bg-tertiary rounded-full" 
@@ -124,7 +124,7 @@ export default function DashboardScreen() {
              </View>
           </View>
 
-          {/* Carbs & Fats (Split) */}
+          {/* Carbs & Fats Row */}
           <View className="flex-row justify-between">
              <MacroMiniCard 
                 label="Karbonhidrat" 
@@ -153,7 +153,7 @@ export default function DashboardScreen() {
           {isLoading ? (
              <ActivityIndicator color="#22C55E" />
           ) : meals.length === 0 ? (
-            <View className="bg-card border border-dashed border-slate-200 rounded-2xl py-10 items-center justify-center">
+            <View className="bg-card border border-dashed border-border rounded-2xl py-10 items-center justify-center">
               <Text className="text-text-hint font-bold">Bugün henüz öğün kaydedilmedi</Text>
             </View>
           ) : (
@@ -168,7 +168,7 @@ export default function DashboardScreen() {
       <TouchableOpacity 
         onPress={() => router.push("/(tabs)/add-meal")}
         activeOpacity={0.85}
-        className="absolute bottom-6 right-6 w-16 h-16 bg-primary rounded-[20px] items-center justify-center shadow-xl shadow-primary/40 elevation-8"
+        className="absolute bottom-28 right-6 w-16 h-16 bg-primary rounded-[20px] items-center justify-center"
       >
         <Ionicons name="add" size={32} color="white" />
       </TouchableOpacity>
@@ -183,28 +183,28 @@ export default function DashboardScreen() {
 }
 
 // Helper Components
-const ActivityCard = ({ label, value, unit, icon, color, noWidth }: any) => (
-  <View className={`bg-card rounded-[16px] p-5 border border-slate-100 shadow-sm items-center ${noWidth ? "" : "w-[48%]"}`}>
-    <View style={{ backgroundColor: `${color}15` }} className="p-2 rounded-xl mb-2">
-      <Ionicons name={icon} size={18} color={color} />
+const ActivityCard = ({ label, value, icon, color, unit, containerClass }: any) => (
+  <View className={`bg-white rounded-[24px] p-6 items-center border border-border ${containerClass}`}>
+    <View className="mb-3">
+      <Ionicons name={icon as any} size={24} color={color} />
     </View>
     <View className="flex-row items-baseline">
-      <Text className="text-[14px] font-black text-text-primary">{value}</Text>
+      <Text className="text-[18px] font-black text-text-primary">{value}</Text>
       {unit && <Text className="text-[10px] font-bold text-text-hint ml-1">{unit}</Text>}
     </View>
-    <Text className="text-[9px] font-black text-text-hint uppercase tracking-widest mt-1">{label}</Text>
+    <Text className="text-[10px] font-black text-text-hint uppercase tracking-widest mt-1">{label}</Text>
   </View>
 );
 
 const MacroMiniCard = ({ label, value, max, color }: any) => {
   const percentage = Math.min((value / max) * 100, 100);
   return (
-    <View className="bg-card rounded-[16px] p-5 border border-slate-100 shadow-sm w-[48%]">
-       <View className="mb-2">
-          <Text className="text-text-primary font-bold text-xs">{label}</Text>
-          <Text className="text-text-primary font-bold text-[10px] mt-0.5">{Math.round(value)}g <Text className="text-text-hint">/ {max}g</Text></Text>
+    <View className="bg-white rounded-[24px] p-6 w-[48%] border border-border">
+       <View className="mb-4">
+          <Text className="text-text-primary font-bold text-sm mb-1">{label}</Text>
+          <Text className="text-text-primary font-bold text-xs">{Math.round(value)}g <Text className="text-text-hint font-medium">/ {max}g</Text></Text>
        </View>
-       <View className="h-2 bg-slate-100 rounded-full overflow-hidden">
+       <View className="h-3 bg-slate-100 rounded-full overflow-hidden">
           <View style={{ width: `${percentage}%`, backgroundColor: color }} className="h-full rounded-full" />
        </View>
     </View>

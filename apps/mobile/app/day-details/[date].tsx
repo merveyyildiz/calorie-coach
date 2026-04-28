@@ -47,7 +47,7 @@ export default function DayDetailsScreen() {
   return (
     <SafeAreaView className="flex-1 bg-background" edges={["top"]}>
       {/* Header with Back Button */}
-        <View className="px-4 py-4 flex-row items-center bg-white/50 border-b border-slate-100">
+        <View className="px-4 py-4 flex-row items-center bg-white/50 border-b border-border">
         <TouchableOpacity 
           onPress={() => router.back()}
           className="w-10 h-10 rounded-full bg-slate-100 items-center justify-center mr-4"
@@ -68,7 +68,7 @@ export default function DayDetailsScreen() {
       >
         <View className="px-4">
           {/* Day Summary Card */}
-        <View className="bg-primary rounded-[16px] p-6 mb-8 shadow-xl shadow-primary/10">
+        <View className="bg-primary rounded-[16px] p-6 mb-8">
           <View className="flex-row justify-between items-center mb-6">
             <View>
               <Text className="text-white/70 text-[10px] font-black uppercase tracking-widest mb-1">TOPLAM KALORİ</Text>
@@ -89,7 +89,7 @@ export default function DayDetailsScreen() {
         <Text className="text-lg font-black text-text-primary mb-4 uppercase tracking-widest text-[11px]">Günün Öğünleri</Text>
 
         {meals.length === 0 ? (
-          <View className="bg-card border border-dashed border-slate-200 rounded-2xl py-12 items-center justify-center">
+          <View className="bg-white border border-dashed border-border rounded-2xl py-12 items-center justify-center">
             <Text className="text-text-hint font-bold">Bu gün için öğün kaydedilmedi.</Text>
           </View>
         ) : (

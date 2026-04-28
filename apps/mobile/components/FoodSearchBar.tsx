@@ -22,7 +22,7 @@ export const FoodSearchBar: React.FC<FoodSearchBarProps> = ({
   }, [text]);
 
   return (
-    <View className="flex-row items-center bg-card border border-border rounded-button px-4 h-14 shadow-sm">
+    <View className="flex-row items-center bg-white border border-border rounded-button px-4 h-14">
       <Ionicons name="search" size={20} color="#9E9E9E" />
       <TextInput
         className="flex-1 ml-3 text-base text-text-primary"

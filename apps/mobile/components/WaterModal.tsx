@@ -44,7 +44,7 @@ export const WaterModal: React.FC<Props> = ({ isVisible, onClose }) => {
           style={StyleSheet.absoluteFill} 
         />
         
-        <View className="bg-card w-[90%] rounded-[32px] p-8 shadow-2xl">
+        <View className="bg-white w-[90%] rounded-[32px] p-8 border border-border">
           <View className="items-center mb-6">
             <View className="w-16 h-16 bg-blue-50 rounded-full items-center justify-center mb-4">
               <Ionicons name="water" size={32} color="#3B82F6" />
@@ -65,7 +65,7 @@ export const WaterModal: React.FC<Props> = ({ isVisible, onClose }) => {
               <TouchableOpacity
                 key={opt.label}
                 onPress={() => handleAdd(opt.amount)}
-                className="items-center bg-slate-50 border border-slate-100 p-4 rounded-2xl w-[30%]"
+                className="items-center bg-white border border-border p-4 rounded-2xl w-[30%]"
               >
                 <Ionicons name={opt.icon as any} size={24} color="#3B82F6" />
                 <Text className="text-[10px] font-bold text-text-primary mt-2">{opt.label}</Text>
@@ -77,13 +77,13 @@ export const WaterModal: React.FC<Props> = ({ isVisible, onClose }) => {
           <View className="flex-row space-x-3">
              <TouchableOpacity 
                 onPress={handleReset}
-                className="flex-1 h-14 bg-slate-100 rounded-2xl items-center justify-center"
+                className="flex-1 h-14 bg-white border border-border rounded-2xl items-center justify-center"
              >
                 <Text className="text-text-secondary font-bold">Sıfırla</Text>
              </TouchableOpacity>
              <TouchableOpacity 
                 onPress={onClose}
-                className="flex-[2] h-14 bg-blue-600 rounded-2xl items-center justify-center shadow-lg shadow-blue-300"
+                className="flex-[2] h-14 bg-blue-600 rounded-2xl items-center justify-center"
              >
                 <Text className="text-white font-bold text-lg">Kapat</Text>
              </TouchableOpacity>

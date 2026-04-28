@@ -17,7 +17,7 @@ export function RecentLogCard({ name, time, calories, imageUrl, onPress }: Props
       disabled={!onPress}
       activeOpacity={0.7}
       style={{ flexDirection: "row", alignItems: "center" }}
-      className="bg-card rounded-[16px] p-2.5 my-1.5 border border-slate-100 shadow-sm mx-0.5"
+      className="bg-white rounded-[16px] p-2.5 my-1.5 border border-border mx-0.5"
     >
       {/* Sol: Görsel */}
       <View className="w-14 h-14 bg-slate-100 rounded-xl overflow-hidden items-center justify-center">

@@ -35,7 +35,7 @@ export default function ProfileScreen() {
       <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 100 }}>
         
         {/* Head Bar */}
-        <View className="px-4 py-4 border-b border-border/50 bg-card flex-row items-center justify-between pb-6 pt-8">
+        <View className="px-4 py-4 border-b border-border bg-white flex-row items-center justify-between pb-6 pt-8">
           <View className="flex-row items-center">
             <View className="w-16 h-16 bg-primary-light rounded-full border-[3px] border-primary/20 items-center justify-center mr-4">
               <Text className="text-xl font-bold text-primary">
@@ -53,19 +53,19 @@ export default function ProfileScreen() {
           <Text className="text-lg font-bold text-text-primary mb-4">Metabolik Durum</Text>
           
           <View className="flex-row mb-4">
-            <View className="flex-1 bg-card border border-border rounded-[16px] p-4 items-center mr-2 shadow-sm">
+            <View className="flex-1 bg-white border border-border rounded-[16px] p-4 items-center mr-2">
               <Ionicons name="body-outline" size={24} color="#F97316" mb-2 />
               <Text className="text-[10px] text-text-hint font-black tracking-widest">BMI</Text>
               <Text className="text-xl font-black text-text-primary mt-1">{calculateBmi()}</Text>
             </View>
 
-            <View className="flex-1 bg-card border border-border rounded-[16px] p-4 items-center mx-1 shadow-sm">
+            <View className="flex-1 bg-white border border-border rounded-[16px] p-4 items-center mx-1">
               <Ionicons name="flame-outline" size={24} color="#22C55E" mb-2 />
               <Text className="text-[10px] text-text-hint font-black tracking-widest">Günlük Hedef</Text>
               <Text className="text-xl font-black text-text-primary mt-1">{profile?.dailyCalorieGoal || 0}</Text>
             </View>
 
-            <View className="flex-1 bg-card border border-border rounded-[16px] p-4 items-center ml-2 shadow-sm">
+            <View className="flex-1 bg-white border border-border rounded-[16px] p-4 items-center ml-2">
               <Ionicons name="fitness-outline" size={24} color="#3B82F6" mb-2 />
               <Text className="text-[10px] text-text-hint font-black tracking-widest">Ana Hedef</Text>
               <Text className="text-[10px] font-black text-primary mt-2" numberOfLines={1}>{getGoalStatusLabel(profile?.goal)}</Text>
@@ -73,12 +73,12 @@ export default function ProfileScreen() {
           </View>
 
           <Text className="text-lg font-bold text-text-primary mb-3 mt-4">Vücut Bilgileri</Text>
-          <View className="bg-card border border-border rounded-card overflow-hidden shadow-sm">
-            <View className="flex-row justify-between items-center p-4 border-b border-border/50">
+          <View className="bg-white border border-border rounded-card overflow-hidden">
+            <View className="flex-row justify-between items-center p-4 border-b border-border">
               <Text className="text-base text-text-secondary font-medium">Yaş</Text>
               <Text className="text-base font-bold text-text-primary">{profile?.age} yaş</Text>
             </View>
-            <View className="flex-row justify-between items-center p-4 border-b border-border/50">
+            <View className="flex-row justify-between items-center p-4 border-b border-border">
               <Text className="text-base text-text-secondary font-medium">Boy</Text>
               <Text className="text-base font-bold text-text-primary">{profile?.height} cm</Text>
             </View>
@@ -90,8 +90,8 @@ export default function ProfileScreen() {
 
           {/* Aksiyonlar */}
           <Text className="text-lg font-bold text-text-primary mb-3 mt-8">Hesap Ayarları</Text>
-          <View className="bg-card border border-border rounded-card overflow-hidden shadow-sm mb-6">
-            <TouchableOpacity className="flex-row items-center p-4 border-b border-border/50">
+          <View className="bg-white border border-border rounded-card overflow-hidden mb-6">
+            <TouchableOpacity className="flex-row items-center p-4 border-b border-border">
               <Ionicons name="pencil" size={20} color="#9E9E9E" className="mr-3" />
               <Text className="flex-1 text-base text-text-primary font-medium">Profili Düzenle</Text>
               <Ionicons name="chevron-forward" size={20} color="#E0E0E0" />

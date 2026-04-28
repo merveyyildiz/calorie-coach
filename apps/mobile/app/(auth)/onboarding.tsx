@@ -131,7 +131,7 @@ export default function OnboardingScreen() {
           
           {/* Geri butonu (sadece 2. ve 3. adımda) */}
           {step > 1 && (
-            <TouchableOpacity onPress={() => setStep(step - 1)} className="absolute top-12 left-6 z-10 w-10 h-10 items-center justify-center bg-card rounded-full shadow-sm">
+            <TouchableOpacity onPress={() => setStep(step - 1)} className="absolute top-12 left-6 z-10 w-10 h-10 items-center justify-center bg-white rounded-full border border-border">
               <Ionicons name="arrow-back" size={24} color="#333" />
             </TouchableOpacity>
           )}
@@ -237,7 +237,7 @@ export default function OnboardingScreen() {
                 <TouchableOpacity
                   key={item.id}
                   onPress={() => setActivityLevel(item.id as ActivityLevel)}
-                  className={`p-4 mb-3 rounded-card border ${activityLevel === item.id ? "bg-primary-light border-primary" : "bg-card border-border shadow-sm"}`}
+                  className={`p-4 mb-3 rounded-card border ${activityLevel === item.id ? "bg-primary-light border-primary" : "bg-white border-border"}`}
                 >
                   <View className="flex-row items-center justify-between">
                     <View>
@@ -272,7 +272,7 @@ export default function OnboardingScreen() {
                   <TouchableOpacity
                     key={item.id}
                     onPress={() => setGoal(item.id as Goal)}
-                    className={`p-5 rounded-card border flex-row items-center ${goal === item.id ? "bg-primary-light border-primary" : "bg-card border-border shadow-sm"}`}
+                    className={`p-5 rounded-card border flex-row items-center ${goal === item.id ? "bg-primary-light border-primary" : "bg-white border-border"}`}
                   >
                     <Ionicons name={item.icon as any} size={28} color={goal === item.id ? "#4CAF50" : "#9E9E9E"} className="mr-4" />
                     <Text className={`text-lg font-bold flex-1 ${goal === item.id ? "text-primary-dark" : "text-text-primary"}`}>{item.title}</Text>
@@ -281,7 +281,7 @@ export default function OnboardingScreen() {
               </View>
 
               {goal && (
-                <View className="bg-card rounded-card border border-border p-6 items-center shadow-lg">
+                <View className="bg-white rounded-card border border-border p-6 items-center">
                   <Text className="text-text-secondary text-base font-medium mb-2">Önerilen Günlük Kalori Hedefi</Text>
                   <View className="flex-row items-end">
                     <Text className="text-5xl font-extrabold text-primary">{dailyCalorieGoal}</Text>

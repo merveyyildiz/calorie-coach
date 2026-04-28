@@ -104,8 +104,8 @@ export default function AddMealScreen() {
         {/* Modern Search Bar Section */}
         <View className="px-4 py-8">
           <View 
-            className={`flex-row items-center bg-card rounded-3xl px-5 h-16 border ${
-              isFocused ? "border-primary shadow-lg shadow-primary/20" : "border-slate-100 shadow-sm"
+            className={`flex-row items-center bg-white rounded-3xl px-5 h-16 border ${
+              isFocused ? "border-primary" : "border-border"
             }`}
           >
             <Ionicons 
@@ -214,7 +214,7 @@ export default function AddMealScreen() {
             {isRecentLoading ? (
                <ActivityIndicator color="#22C55E" />
             ) : recentMeals.length === 0 ? (
-              <View className="bg-card border border-dashed border-slate-200 rounded-[16px] py-10 items-center justify-center">
+              <View className="bg-white border border-dashed border-border rounded-[16px] py-10 items-center justify-center">
                 <Text className="text-text-hint font-bold">Henüz kayıt yok</Text>
               </View>
             ) : (

@@ -78,7 +78,7 @@ export default function RegisterScreen() {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
         <View className="flex-1 justify-center px-6 py-12 pt-16">
           
-          <TouchableOpacity onPress={() => router.back()} className="absolute top-12 left-6 z-10 w-10 h-10 items-center justify-center bg-card rounded-full shadow-sm">
+          <TouchableOpacity onPress={() => router.back()} className="absolute top-12 left-6 z-10 w-10 h-10 items-center justify-center bg-white rounded-full border border-border">
             <Ionicons name="arrow-back" size={24} color="#333" />
           </TouchableOpacity>
 
@@ -94,10 +94,10 @@ export default function RegisterScreen() {
           <View className="space-y-4 mb-6">
             <View>
               <Text className="text-sm font-medium text-text-primary mb-1 ml-1">Ad Soyad</Text>
-              <View className="flex-row items-center bg-card rounded-button border border-border px-4 h-14">
+              <View className="flex-row items-center bg-white rounded-button border border-border focus:border-primary px-4 h-14">
                 <Ionicons name="person-outline" size={20} color="#9E9E9E" />
                 <TextInput
-                  className="flex-1 ml-3 text-base text-text-primary"
+                  className="flex-1 ml-3 text-base text-text-primary outline-none"
                   placeholder="Ad Soyad"
                   placeholderTextColor="#9E9E9E"
                   value={name}
@@ -108,10 +108,10 @@ export default function RegisterScreen() {
 
             <View>
               <Text className="text-sm font-medium text-text-primary mb-1 ml-1 mt-4">E-posta</Text>
-              <View className="flex-row items-center bg-card rounded-button border border-border px-4 h-14">
+              <View className="flex-row items-center bg-white rounded-button border border-border focus:border-primary px-4 h-14">
                 <Ionicons name="mail-outline" size={20} color="#9E9E9E" />
                 <TextInput
-                  className="flex-1 ml-3 text-base text-text-primary"
+                  className="flex-1 ml-3 text-base text-text-primary outline-none"
                   placeholder="ornek@email.com"
                   placeholderTextColor="#9E9E9E"
                   keyboardType="email-address"
@@ -124,10 +124,10 @@ export default function RegisterScreen() {
 
             <View>
               <Text className="text-sm font-medium text-text-primary mb-1 ml-1 mt-4">Şifre</Text>
-              <View className="flex-row items-center bg-card rounded-button border border-border px-4 h-14">
+              <View className="flex-row items-center bg-white rounded-button border border-border focus:border-primary px-4 h-14">
                 <Ionicons name="lock-closed-outline" size={20} color="#9E9E9E" />
                 <TextInput
-                  className="flex-1 ml-3 text-base text-text-primary"
+                  className="flex-1 ml-3 text-base text-text-primary outline-none"
                   placeholder="En az 6 karakter"
                   placeholderTextColor="#9E9E9E"
                   secureTextEntry={!showPassword}
@@ -146,10 +146,10 @@ export default function RegisterScreen() {
 
             <View>
               <Text className="text-sm font-medium text-text-primary mb-1 ml-1 mt-4">Şifre Tekrar</Text>
-              <View className="flex-row items-center bg-card rounded-button border border-border px-4 h-14">
+              <View className="flex-row items-center bg-white rounded-button border border-border focus:border-primary px-4 h-14">
                 <Ionicons name="lock-closed-outline" size={20} color="#9E9E9E" />
                 <TextInput
-                  className="flex-1 ml-3 text-base text-text-primary"
+                  className="flex-1 ml-3 text-base text-text-primary outline-none"
                   placeholder="Şifreni onayla"
                   placeholderTextColor="#9E9E9E"
                   secureTextEntry={!showPassword}
@@ -188,7 +188,7 @@ export default function RegisterScreen() {
           <TouchableOpacity
             onPress={handleGoogleLogin}
             disabled={loading}
-            className="flex-row h-14 bg-card rounded-button border border-border items-center justify-center mb-8 shadow-sm"
+            className="flex-row h-14 bg-white rounded-button border border-border items-center justify-center mb-8"
           >
             <Ionicons name="logo-google" size={20} color="#DB4437" className="mr-3" />
             <Text className="text-text-primary text-base font-semibold ml-2">

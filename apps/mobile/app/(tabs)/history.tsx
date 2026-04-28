@@ -29,13 +29,13 @@ export default function HistoryScreen() {
         <View className="flex-row bg-slate-100/80 rounded-2xl p-1 border border-slate-200/50">
           <TouchableOpacity 
             onPress={() => setRange("week")}
-            className={`px-4 py-1.5 rounded-xl ${range === "week" ? "bg-white shadow-sm" : "bg-transparent"}`}
+            className={`px-4 py-1.5 rounded-xl ${range === "week" ? "bg-white" : "bg-transparent"}`}
           >
             <Text className={`text-xs font-black ${range === "week" ? "text-primary" : "text-text-hint"}`}>HAFTA</Text>
           </TouchableOpacity>
           <TouchableOpacity 
             onPress={() => setRange("month")}
-            className={`px-4 py-1.5 rounded-xl ${range === "month" ? "bg-white shadow-sm" : "bg-transparent"}`}
+            className={`px-4 py-1.5 rounded-xl ${range === "month" ? "bg-white" : "bg-transparent"}`}
           >
             <Text className={`text-xs font-black ${range === "month" ? "text-primary" : "text-text-hint"}`}>AY</Text>
           </TouchableOpacity>
@@ -56,7 +56,7 @@ export default function HistoryScreen() {
         >
           <View className="px-4">
             {/* Average Progress Card */}
-            <View className="bg-primary rounded-[32px] p-8 mb-8 shadow-xl shadow-primary/20 relative overflow-hidden">
+            <View className="bg-primary rounded-[32px] p-8 mb-8 relative overflow-hidden">
               <View className="flex-row items-center mb-4">
                  <Ionicons name="flash" size={18} color="white" className="mr-2" />
                  <Text className="text-white/80 text-[10px] font-black uppercase tracking-widest">
@@ -89,7 +89,7 @@ export default function HistoryScreen() {
             </View>
 
             {summary?.days?.length === 0 ? (
-              <View className="bg-card border border-dashed border-slate-200 rounded-2xl py-12 items-center justify-center">
+              <View className="bg-white border border-dashed border-border rounded-2xl py-12 items-center justify-center">
                 <Ionicons name="calendar-outline" size={48} color="#94A3B8" />
                 <Text className="text-text-hint mt-4 font-bold">Bu aralıkta veri bulunamadı.</Text>
               </View>
@@ -101,14 +101,14 @@ export default function HistoryScreen() {
                     key={day.date} 
                     activeOpacity={0.7}
                     onPress={() => router.push(`/day-details/${day.date}`)}
-                    className="bg-card mb-4 rounded-[24px] border border-slate-100 shadow-sm flex-row items-center overflow-hidden"
+                    className="bg-white mb-4 rounded-[24px] border border-border flex-row items-center overflow-hidden"
                   >
                     {/* Status Accent Border */}
                     <View className={`w-1.5 self-stretch ${isOnTrack ? "bg-primary" : "bg-orange-400"}`} />
                     
                     <View className="flex-1 flex-row items-center p-4">
                       {/* Date Square */}
-                      <View className="w-14 h-14 bg-white rounded-2xl items-center justify-center mr-4 border border-slate-50 shadow-sm">
+                      <View className="w-14 h-14 bg-white rounded-2xl items-center justify-center mr-4 border border-border">
                         <Text className="text-[10px] font-black text-slate-300 uppercase">
                           {new Date(day.date).toLocaleDateString("tr-TR", { weekday: "short" })}
                         </Text>
