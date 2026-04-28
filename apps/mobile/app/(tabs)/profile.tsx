@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView, TouchableOpacity, Alert } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, Alert, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useAuthStore } from "../../store/authStore";
@@ -8,10 +8,17 @@ import { signOut } from "../../services/auth";
 export default function ProfileScreen() {
   const { profile, user } = useAuthStore();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    if (Platform.OS === "web") {
+      if (confirm("Hesabınızdan çıkış yapmak istediğinize emin misiniz?")) {
+        await signOut();
+      }
+      return;
+    }
+
     Alert.alert("Çıkış Yap", "Hesabınızdan çıkış yapmak istediğinize emin misiniz?", [
       { text: "Vazgeç", style: "cancel" },
-      { text: "Çıkış Yap", style: "destructive", onPress: () => signOut() },
+      { text: "Çıkış Yap", style: "destructive", onPress: async () => await signOut() },
     ]);
   };
 
