@@ -63,7 +63,7 @@ export default function AddMealScreen() {
     // 100g bazlı değerleri geri hesapla
     const factor = 100 / (food.portionGram || 100);
     const product = {
-      id: food.offCode || food.id,
+      id: food.sourceId || food.id,
       name: food.foodName,
       imageUrl: food.imageUrl,
       per100g: {

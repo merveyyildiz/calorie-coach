@@ -8,7 +8,8 @@ export interface MacroNutrients {
 export interface FoodItem {
   id?: string;
   foodName: string;
-  offCode?: string;     // Open Food Facts ürün kodu
+  /** Unique food identifier from the data source (e.g. "local-rice", "usda-123", "edamam-abc") */
+  sourceId?: string;
   portionGram: number;  // kullanıcının seçtiği gram
   calories: number;
   macros: MacroNutrients;
