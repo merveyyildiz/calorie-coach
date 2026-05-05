@@ -36,6 +36,7 @@ function RootLayoutNav() {
 
   useEffect(() => {
     const handleSession = async (currentSession: Session | null) => {
+      setIsReady(false); // Yeni session durumunda tekrar bekleme moduna gir
       setSession(currentSession);
       if (currentSession) {
         try {
